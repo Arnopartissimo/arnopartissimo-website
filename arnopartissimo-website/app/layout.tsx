@@ -3,8 +3,10 @@ import { Geist, Geist_Mono } from 'next/font/google';
 import './globals.css';
 import { Header } from '@/components/layout/Header';
 import { Footer } from '@/components/layout/Footer';
+import { JsonLd } from '@/components/seo/JsonLd';
 import { sanityClient } from '@/lib/sanity/client';
 import { siteSettingsQuery } from '@/lib/sanity/queries';
+import { websiteSchema, personSchema } from '@/lib/seo/schema';
 import { SiteSettings } from '@/types';
 
 const geistSans = Geist({
@@ -39,9 +41,13 @@ export default async function RootLayout({
   children: React.ReactNode;
 }>) {
   const settings = await getSiteSettings();
+  const siteSettings = settings ?? { _id: '', title: 'Arno Partissimo', contactEmail: '' };
 
   return (
     <html lang="en" className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
+      <head>
+        <JsonLd data={[websiteSchema(siteSettings), personSchema(siteSettings)]} />
+      </head>
       <body className="min-h-full flex flex-col">
         <Header />
         <main className="min-h-screen pt-16">{children}</main>

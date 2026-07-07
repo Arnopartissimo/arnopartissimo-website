@@ -2,7 +2,7 @@ import { groq } from 'next-sanity';
 
 export const siteSettingsQuery = groq`*[_type == "siteSettings"][0]`;
 
-export const pagesQuery = groq`*[_type == "page"] { slug, title }`;
+export const pagesQuery = groq`*[_type == "page"] { slug, title, _updatedAt }`;
 
 export const pageBySlugQuery = groq`*[_type == "page" && slug.current == $slug][0]`;
 
@@ -17,7 +17,9 @@ export const projectsQuery = groq`
     role,
     coverImage,
     isFeatured,
-    order
+    order,
+    publishedAt,
+    updatedAt
   }
 `;
 
