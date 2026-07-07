@@ -1,13 +1,6 @@
 import { groq } from 'next-sanity';
 
-export const siteSettingsQuery = groq`*[_type == "siteSettings"][0] {
-  ...,
-  instagramUrl,
-  availableWorldwideText,
-  bookingEmail,
-  footerLeftLabel,
-  footerRightLabel
-}`;
+export const siteSettingsQuery = groq`*[_type == "siteSettings"][0]`;
 
 export const pagesQuery = groq`*[_type == "page"] { slug, title, _updatedAt }`;
 

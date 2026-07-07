@@ -17,25 +17,23 @@ export function Footer({ settings }: FooterProps) {
 
   return (
     <footer className="py-8">
-      <div className="mx-auto flex max-w-7xl flex-col justify-between gap-6 px-4 sm:flex-row sm:px-6 lg:px-8">
+      <div className="mx-auto flex max-w-7xl flex-row flex-wrap justify-between gap-4 px-4 sm:gap-6 sm:px-6 lg:px-8">
         <FooterColumn title={leftLabel}>
           <a
             href={instagramUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="text-[10px] uppercase tracking-[0.3em] text-foreground hover:opacity-70 transition-opacity"
+            className="text-[10px] uppercase tracking-[0.3em] text-white hover:opacity-70 transition-opacity"
           >
             INSTAGRAM.
           </a>
         </FooterColumn>
 
         <FooterColumn title={availableText}>
-          <span className="text-[10px] uppercase tracking-[0.3em] text-foreground">
-            {rightLabel}
-          </span>
+          <span className="text-[10px] uppercase tracking-[0.3em] text-white">{rightLabel}</span>
           <a
             href={`mailto:${bookingEmail}`}
-            className="text-[10px] uppercase tracking-[0.3em] text-foreground hover:opacity-70 transition-opacity"
+            className="text-[10px] uppercase tracking-[0.3em] text-white hover:opacity-70 transition-opacity"
             onClick={async (e) => {
               if (navigator.clipboard) {
                 e.preventDefault();
