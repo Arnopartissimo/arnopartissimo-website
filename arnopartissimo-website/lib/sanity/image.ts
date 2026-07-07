@@ -1,5 +1,5 @@
-import createImageUrlBuilder from '@sanity/image-url';
-import { sanityClient, projectId, dataset } from './client';
+import { createImageUrlBuilder } from '@sanity/image-url';
+import { projectId, dataset } from './client';
 
 const builder = createImageUrlBuilder({ projectId, dataset });
 

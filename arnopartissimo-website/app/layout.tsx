@@ -31,7 +31,9 @@ export async function generateMetadata(): Promise<Metadata> {
   const settings = await getSiteSettings();
   return {
     title: settings?.title || 'Arno Partissimo',
-    description: settings?.description,
+    description:
+      settings?.description ||
+      'Portfolio of Arno Partissimo — creative direction, photography and visual storytelling.',
   };
 }
 
