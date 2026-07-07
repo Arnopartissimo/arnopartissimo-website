@@ -1,3 +1,4 @@
+import type { PortableTextBlock } from '@portabletext/types';
 import type { SanityImageSource } from '@sanity/image-url';
 
 export interface SanityAsset {
@@ -42,7 +43,7 @@ export interface Project {
   tags?: string[];
   coverImage: Media;
   gallery?: Media[];
-  description?: unknown[];
+  description?: PortableTextBlock[];
   credits?: string;
   externalLink?: string;
   relatedProjects?: Pick<Project, '_id' | 'title' | 'slug' | 'coverImage'>[];
