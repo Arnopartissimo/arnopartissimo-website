@@ -21,6 +21,7 @@ export const pageBySlugQuery = groq`
         image {
           ...,
           asset->{
+            _id,
             metadata {
               dimensions {
                 width,
