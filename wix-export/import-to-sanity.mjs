@@ -204,15 +204,8 @@ const siteSettingsDoc = {
 // ---------------------------------------------------------------------------
 
 async function buildPageDocs() {
-  const homeImages = (pagesData.index?.images || [])
-    .filter(isUsableImage)
-    .slice(0, 9);
-
+  // Home page only shows featured projects from projectsQuery; no imported sections.
   const homeSections = [];
-  for (const url of homeImages) {
-    const media = await buildMediaObject(url);
-    homeSections.push({ ...media, _key: generateKey('home-') });
-  }
 
   const creativeOrder = ['finalshow', 'upinthesky', 'delxps13', 'complicated', 'wannabeloved'];
   const creativeSections = creativeOrder

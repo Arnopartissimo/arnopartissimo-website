@@ -1,12 +1,15 @@
 import { sanityClient } from '@/lib/sanity/client';
-import { siteSettingsQuery } from '@/lib/sanity/queries';
+import { siteSettingsQuery, pageBySlugQuery } from '@/lib/sanity/queries';
 import { ContactSection } from '@/components/pages/ContactSection';
-import { SiteSettings } from '@/types';
+import { SiteSettings, Page } from '@/types';
 
 export const dynamic = 'force-static';
 
 export default async function ContactRoute() {
-  const settings = await sanityClient.fetch<SiteSettings>(siteSettingsQuery);
+  const [settings, page] = await Promise.all([
+    sanityClient.fetch<SiteSettings>(siteSettingsQuery),
+    sanityClient.fetch<Page>(pageBySlugQuery, { slug: 'contact' }),
+  ]);
 
   if (!settings || !settings.contactEmail) {
     return (
@@ -17,5 +20,8 @@ export default async function ContactRoute() {
     );
   }
 
-  return <ContactSection settings={settings} />;
+  const textBlockSection = page?.sections?.find((section) => section._type === 'textBlock');
+  const description = textBlockSection?.text ?? page?.metaDescription;
+
+  return <ContactSection settings={settings} description={description} />;
 }

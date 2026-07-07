@@ -34,17 +34,21 @@ export function CreativePage({ page }: CreativePageProps) {
                 );
               }
 
-              return (
-                <ProjectCard
-                  key={index}
-                  project={{
-                    _id: section._id,
-                    title: section.title,
-                    slug: section.slug,
-                    coverImage: section.coverImage,
-                  }}
-                />
-              );
+              if (section._type === 'project') {
+                return (
+                  <ProjectCard
+                    key={index}
+                    project={{
+                      _id: section._id,
+                      title: section.title,
+                      slug: section.slug,
+                      coverImage: section.coverImage,
+                    }}
+                  />
+                );
+              }
+
+              return null;
             })}
           </div>
         ) : (
