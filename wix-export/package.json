@@ -1,0 +1,12 @@
+{
+  "name": "wix-export-import",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "import": "node import-to-sanity.mjs"
+  },
+  "dependencies": {
+    "@sanity/client": "^6.21.3"
+  }
+}
