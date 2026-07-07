@@ -42,5 +42,30 @@ export const siteSettingsType = defineType({
       options: { hotspot: true },
     }),
     defineField({ name: 'analyticsId', title: 'Analytics ID', type: 'string' }),
+    defineField({ name: 'instagramUrl', title: 'Instagram URL', type: 'url' }),
+    defineField({
+      name: 'availableWorldwideText',
+      title: 'Available Worldwide Text',
+      type: 'string',
+      initialValue: 'AVAILABLE WORLDWIDE',
+    }),
+    defineField({
+      name: 'bookingEmail',
+      title: 'Booking Email',
+      type: 'string',
+      initialValue: 'arno@arnopartissimo.com',
+    }),
+    defineField({
+      name: 'footerLeftLabel',
+      title: 'Footer Left Label',
+      type: 'string',
+      initialValue: 'ARNO PARTISSIMO',
+    }),
+    defineField({
+      name: 'footerRightLabel',
+      title: 'Footer Right Label',
+      type: 'string',
+      initialValue: 'BOOKING / GENERAL INQUIRIES',
+    }),
   ],
 });

@@ -93,6 +93,11 @@ export interface SiteSettings {
   footerText?: string;
   defaultSeoImage?: SanityImageSource;
   analyticsId?: string;
+  instagramUrl?: string;
+  availableWorldwideText?: string;
+  bookingEmail?: string;
+  footerLeftLabel?: string;
+  footerRightLabel?: string;
 }
 
 export interface NavItem {
