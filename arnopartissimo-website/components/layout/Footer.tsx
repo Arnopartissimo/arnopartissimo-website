@@ -16,26 +16,24 @@ export function Footer({ settings }: FooterProps) {
   const bookingEmail = settings?.bookingEmail || 'arno@arnopartissimo.com';
 
   return (
-    <footer className="border-t border-border py-8">
+    <footer className="py-8">
       <div className="mx-auto flex max-w-7xl flex-col justify-between gap-6 px-4 sm:flex-row sm:px-6 lg:px-8">
         <FooterColumn title={leftLabel}>
           <a
             href={instagramUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="text-[10px] uppercase tracking-[0.3em] text-foreground hover:opacity-70 transition-opacity"
+            className="text-foreground hover:opacity-70 transition-opacity"
           >
             INSTAGRAM.
           </a>
         </FooterColumn>
 
         <FooterColumn title={availableText}>
-          <span className="text-[10px] uppercase tracking-[0.3em] text-foreground">
-            {rightLabel}
-          </span>
+          <span className="text-foreground">{rightLabel}</span>
           <a
             href={`mailto:${bookingEmail}`}
-            className="text-[10px] uppercase tracking-[0.3em] text-foreground hover:opacity-70 transition-opacity"
+            className="text-foreground hover:opacity-70 transition-opacity"
             onClick={async (e) => {
               if (navigator.clipboard) {
                 e.preventDefault();

@@ -13,6 +13,10 @@ describe('Footer', () => {
       'href',
       'https://instagram.com/arnopartissimo'
     );
+    expect(screen.getByRole('link', { name: 'arno@arnopartissimo.com' })).toHaveAttribute(
+      'href',
+      'mailto:arno@arnopartissimo.com'
+    );
   });
 
   it('uses settings when provided', () => {
@@ -34,5 +38,13 @@ describe('Footer', () => {
     expect(screen.getByText('TEST WORLD')).toBeInTheDocument();
     expect(screen.getByText('TEST RIGHT')).toBeInTheDocument();
     expect(screen.getByText('booking@test.com')).toBeInTheDocument();
+    expect(screen.getByRole('link', { name: 'INSTAGRAM.' })).toHaveAttribute(
+      'href',
+      'https://instagram.com/test'
+    );
+    expect(screen.getByRole('link', { name: 'booking@test.com' })).toHaveAttribute(
+      'href',
+      'mailto:booking@test.com'
+    );
   });
 });
