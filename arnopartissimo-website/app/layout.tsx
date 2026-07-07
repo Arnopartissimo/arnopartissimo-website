@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 import { cache } from 'react';
-import { Geist, Geist_Mono } from 'next/font/google';
+import { Inter } from 'next/font/google';
 import './globals.css';
 import { Header } from '@/components/layout/Header';
 import { Footer } from '@/components/layout/Footer';
@@ -11,13 +11,8 @@ import { websiteSchema, personSchema } from '@/lib/seo/schema';
 import { urlFor } from '@/lib/sanity/image';
 import { SiteSettings } from '@/types';
 
-const geistSans = Geist({
-  variable: '--font-geist-sans',
-  subsets: ['latin'],
-});
-
-const geistMono = Geist_Mono({
-  variable: '--font-geist-mono',
+const inter = Inter({
+  variable: '--font-inter',
   subsets: ['latin'],
 });
 
@@ -56,13 +51,13 @@ export default async function RootLayout({
   const siteSettings = settings ?? { _id: '', title: 'Arno Partissimo', contactEmail: '' };
 
   return (
-    <html lang="en" className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
+    <html lang="en" className={`${inter.variable} antialiased`}>
       <head>
         <JsonLd data={[websiteSchema(siteSettings), personSchema(siteSettings)]} />
       </head>
-      <body className="min-h-full flex flex-col">
+      <body className="min-h-full flex flex-col bg-background text-foreground font-sans">
         <Header />
-        <main className="min-h-screen pt-16">{children}</main>
+        <main className="flex-1 pt-32">{children}</main>
         <Footer settings={settings ?? undefined} />
       </body>
     </html>
