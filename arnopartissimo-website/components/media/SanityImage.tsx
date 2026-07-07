@@ -2,7 +2,7 @@ import Image from 'next/image';
 
 import { urlFor } from '@/lib/sanity/image';
 import { cn } from '@/lib/utils/cn';
-import { Media } from '@/types';
+import { Media, MediaImage } from '@/types';
 
 interface SanityImageProps {
   media: Media;
@@ -15,7 +15,11 @@ interface SanityImageProps {
   height?: number;
 }
 
-function normalizeImageAsset(image: NonNullable<Media['image']>) {
+function normalizeImageAsset(image: NonNullable<Media['image']>): MediaImage | null {
+  if (typeof image === 'string') {
+    return { asset: { _ref: image, _type: 'reference' as const } } as MediaImage;
+  }
+
   const asset = image.asset;
   if (!asset) {
     return null;
@@ -34,7 +38,7 @@ function normalizeImageAsset(image: NonNullable<Media['image']>) {
     return null;
   }
 
-  return { ...image, asset: { _ref: ref, _type: 'reference' as const } };
+  return { ...(image as object), asset: { _ref: ref, _type: 'reference' as const } } as MediaImage;
 }
 
 export function SanityImage({
