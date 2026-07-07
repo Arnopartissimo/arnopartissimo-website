@@ -4,7 +4,21 @@ export const siteSettingsQuery = groq`*[_type == "siteSettings"][0]`;
 
 export const pagesQuery = groq`*[_type == "page"] { slug, title, _updatedAt }`;
 
-export const pageBySlugQuery = groq`*[_type == "page" && slug.current == $slug][0]`;
+export const pageBySlugQuery = groq`
+  *[_type == "page" && slug.current == $slug][0] {
+    ...,
+    sections[] {
+      ...,
+      _type == 'reference' => @-> {
+        _type,
+        _id,
+        title,
+        "slug": slug.current,
+        coverImage
+      }
+    }
+  }
+`;
 
 export const projectsQuery = groq`
   *[_type == "project" && status == "published"] | order(order asc, publishedAt desc) {

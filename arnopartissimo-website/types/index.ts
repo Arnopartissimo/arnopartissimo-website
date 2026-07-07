@@ -54,6 +54,23 @@ export interface Project {
   updatedAt?: string;
 }
 
+export interface TextBlock {
+  _type: 'textBlock';
+  _key?: string;
+  text: PortableTextBlock[];
+}
+
+export interface PageProjectSection {
+  _type: 'project';
+  _key?: string;
+  _id: string;
+  title: string;
+  slug: string;
+  coverImage: Media;
+}
+
+export type PageSection = PageProjectSection | Media | TextBlock;
+
 export interface Page {
   _id: string;
   slug: { current: string };
@@ -62,7 +79,7 @@ export interface Page {
   metaDescription?: string;
   ogImage?: SanityImageSource;
   noIndex?: boolean;
-  sections?: (Project | Media)[];
+  sections?: (PageSection & { _key: string })[];
 }
 
 export interface SiteSettings {

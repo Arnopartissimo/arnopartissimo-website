@@ -32,17 +32,43 @@ const pagesData = await readJson('pages.json');
 const projectsData = await readJson('projects.json');
 
 // ---------------------------------------------------------------------------
-// Image helpers
+// Helpers
 // ---------------------------------------------------------------------------
+
+function generateKey(prefix = '') {
+  return `${prefix}${Math.random().toString(36).slice(2, 9)}`;
+}
+
+const GENERIC_OG_IMAGE_ID = 'c36c82_429ca304a9134c3f9f37d78da5af5767';
+
+function parseImageDimensions(url) {
+  const match = url.match(/\/v1\/[^/]+\/(w_\d+,h_\d+)[^/]*\//);
+  if (!match) return null;
+  const dimMatch = match[1].match(/w_(\d+),h_(\d+)/);
+  if (!dimMatch) return null;
+  return { width: parseInt(dimMatch[1], 10), height: parseInt(dimMatch[2], 10) };
+}
+
+function isGenericOgImage(url) {
+  return url.includes(GENERIC_OG_IMAGE_ID);
+}
+
+function isUsableImage(url) {
+  if (isGenericOgImage(url)) return false;
+  const dims = parseImageDimensions(url);
+  if (!dims) return true;
+  return dims.width >= 400 && dims.height >= 400;
+}
 
 function makeHighQualityUrl(url) {
   if (!url) return url;
   const needsUpgrade = /q_(50|60)|blur_2|enc_avif|quality_auto/.test(url);
   if (!needsUpgrade) return url;
 
-  return url.replace(/\/v1\/[^/]+\/([^/]*)$/, (_match, tail) => {
-    return `/v1/fit/w_2500,h_2500,q_90,enc_auto/${tail}`;
-  });
+  return url.replace(
+    /\/v1\/[^/]+\/[^/]+\/([^/]+)$/,
+    '/v1/fit/w_2500,h_2500,al_c,q_90,usm_0.66_1.00_0.01/$1'
+  );
 }
 
 const assetCache = new Map();
@@ -83,11 +109,15 @@ async function uploadImage(sourceUrl) {
   throw new Error(`Could not upload image ${sourceUrl}: ${lastError?.message}`);
 }
 
-async function buildImageObject(url) {
+async function buildMediaObject(url) {
   const assetId = await uploadImage(url);
   return {
-    _type: 'image',
-    asset: { _type: 'reference', _ref: assetId },
+    _type: 'media',
+    type: 'image',
+    image: {
+      _type: 'image',
+      asset: { _type: 'reference', _ref: assetId },
+    },
   };
 }
 
@@ -102,9 +132,10 @@ function descriptionToPortableText(text) {
     .map((line) => line.trim())
     .filter(Boolean)
     .map((line) => ({
+      _key: generateKey('pt-'),
       _type: 'block',
       style: 'normal',
-      children: [{ _type: 'span', text: line, marks: [] }],
+      children: [{ _key: generateKey('span-'), _type: 'span', text: line, marks: [] }],
       markDefs: [],
     }));
 }
@@ -172,26 +203,68 @@ const siteSettingsDoc = {
 // Pages
 // ---------------------------------------------------------------------------
 
-const pageDocs = [
-  {
-    _id: 'page-home',
-    _type: 'page',
-    title: 'Home',
-    slug: { _type: 'slug', current: 'home' },
-  },
-  {
-    _id: 'page-creative',
-    _type: 'page',
-    title: 'Creative Direction',
-    slug: { _type: 'slug', current: 'creative' },
-  },
-  {
-    _id: 'page-contact',
-    _type: 'page',
-    title: 'Contact',
-    slug: { _type: 'slug', current: 'contact' },
-  },
-];
+async function buildPageDocs() {
+  const homeImages = (pagesData.index?.images || [])
+    .filter(isUsableImage)
+    .slice(0, 9);
+
+  const homeSections = [];
+  for (const url of homeImages) {
+    const media = await buildMediaObject(url);
+    homeSections.push({ ...media, _key: generateKey('home-') });
+  }
+
+  const creativeOrder = ['finalshow', 'upinthesky', 'delxps13', 'complicated', 'wannabeloved'];
+  const creativeSections = creativeOrder
+    .filter((slug) => projectsData[slug])
+    .map((slug) => ({
+      _key: generateKey('creative-'),
+      _type: 'reference',
+      _ref: `project-${slug}`,
+    }));
+
+  const contactBio = extractContactDescription(pagesData.contact?.text || '');
+  const contactImageUrl = pagesData.contact?.images?.[0];
+  const contactSections = [];
+
+  if (contactBio) {
+    contactSections.push({
+      _key: generateKey('contact-'),
+      _type: 'textBlock',
+      text: descriptionToPortableText(contactBio),
+    });
+  }
+
+  if (contactImageUrl) {
+    const media = await buildMediaObject(contactImageUrl);
+    contactSections.push({ ...media, _key: generateKey('contact-') });
+  }
+
+  return [
+    {
+      _id: 'page-home',
+      _type: 'page',
+      title: 'Home',
+      slug: { _type: 'slug', current: 'home' },
+      sections: homeSections,
+    },
+    {
+      _id: 'page-creative',
+      _type: 'page',
+      title: 'Creative Direction',
+      slug: { _type: 'slug', current: 'creative' },
+      sections: creativeSections,
+    },
+    {
+      _id: 'page-contact',
+      _type: 'page',
+      title: 'Contact',
+      slug: { _type: 'slug', current: 'contact' },
+      metaDescription: contactBio,
+      sections: contactSections,
+    },
+  ];
+}
 
 // ---------------------------------------------------------------------------
 // Projects
@@ -208,20 +281,23 @@ async function buildProjectDocs() {
     const meta = project.metadata || {};
     const images = project.images || [];
 
+    const validImages = images.filter(isUsableImage);
+    const fallbackImages = validImages.length > 0 ? validImages : images;
+
     let coverImage;
     const gallery = [];
 
-    for (let i = 0; i < images.length; i++) {
-      const imageObj = await buildImageObject(images[i]);
+    for (let i = 0; i < fallbackImages.length; i++) {
+      const url = fallbackImages[i];
+      const media = await buildMediaObject(url);
       if (i === 0) {
-        coverImage = imageObj;
+        coverImage = media;
       } else {
-        gallery.push(imageObj);
+        gallery.push({ ...media, _key: generateKey('gallery-') });
       }
     }
 
-    const credits =
-      meta.credits || meta.management || meta.label || '';
+    const credits = meta.credits || meta.management || meta.label || '';
 
     docs.push({
       _id: `project-${meta.slug || key}`,
@@ -250,6 +326,7 @@ async function buildProjectDocs() {
 // Run import
 // ---------------------------------------------------------------------------
 
+const pageDocs = await buildPageDocs();
 const projectDocs = await buildProjectDocs();
 
 const tx = client.transaction();
@@ -260,15 +337,17 @@ for (const cat of categories) {
 
 tx.createOrReplace(siteSettingsDoc);
 
-for (const page of pageDocs) {
-  tx.createOrReplace(page);
-}
-
 for (const project of projectDocs) {
   tx.createOrReplace(project);
 }
 
-console.log(`Committing ${categories.length} categories, 1 siteSettings, ${pageDocs.length} pages, ${projectDocs.length} projects…`);
+for (const page of pageDocs) {
+  tx.createOrReplace(page);
+}
+
+console.log(
+  `Committing ${categories.length} categories, 1 siteSettings, ${pageDocs.length} pages, ${projectDocs.length} projects…`
+);
 const result = await tx.commit();
 console.log('Import committed:', result);
 

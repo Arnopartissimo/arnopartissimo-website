@@ -1,10 +1,16 @@
 import Link from 'next/link';
 
-import { Project } from '@/types';
+import { Media } from '@/types';
 import { SanityImage } from '@/components/media/SanityImage';
 
 interface ProjectCardProps {
-  project: Project;
+  project: {
+    _id: string;
+    title: string;
+    slug: string;
+    category?: { title: string };
+    coverImage: Media;
+  };
   priority?: boolean;
 }
 

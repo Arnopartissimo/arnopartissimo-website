@@ -31,8 +31,12 @@ export const pageType = defineType({
       name: 'sections',
       title: 'Sections',
       type: 'array',
-      of: [{ type: 'reference', to: [{ type: 'project' }] }, { type: 'media' }],
-      description: 'For now: featured projects or media blocks. Can be extended later.',
+      of: [
+        { type: 'reference', to: [{ type: 'project' }] },
+        { type: 'media' },
+        { type: 'textBlock' },
+      ],
+      description: 'Featured projects, media blocks, or text blocks.',
     }),
   ],
 });
