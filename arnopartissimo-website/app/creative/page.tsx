@@ -12,7 +12,7 @@ export default async function CreativeRoute() {
     return (
       <div className="py-20 text-center">
         <h1 className="text-2xl">Creative Direction</h1>
-        <p className="mt-4 text-neutral-500">Content coming soon.</p>
+        <p className="mt-4 text-muted">Content coming soon.</p>
       </div>
     );
   }

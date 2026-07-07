@@ -11,8 +11,8 @@ export default async function HomePage() {
   if (!page) {
     return (
       <div className="py-20 text-center">
-        <h1 className="text-2xl">Arno Partissimo</h1>
-        <p className="mt-4 text-neutral-500">Home content coming soon.</p>
+        <h1 className="text-2xl text-foreground">Arno Partissimo</h1>
+        <p className="mt-4 text-muted">Home content coming soon.</p>
       </div>
     );
   }

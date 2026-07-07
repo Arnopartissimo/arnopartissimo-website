@@ -15,7 +15,7 @@ export default async function ContactRoute() {
     return (
       <div className="py-20 text-center">
         <h1 className="text-2xl">Contact</h1>
-        <p className="mt-4 text-neutral-500">Contact information coming soon.</p>
+        <p className="mt-4 text-muted">Contact information coming soon.</p>
       </div>
     );
   }
