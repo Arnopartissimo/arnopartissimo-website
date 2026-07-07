@@ -28,8 +28,10 @@ export function ContactSection({ settings, description }: ContactSectionProps) {
   return (
     <Container>
       <Section className="flex min-h-[60vh] flex-col items-start justify-center">
-        <h1 className="mb-8 text-3xl font-light uppercase tracking-wide">Contact</h1>
-        <p className="mb-6 text-neutral-600">
+        <h1 className="mb-8 text-3xl font-light uppercase tracking-wide text-foreground">
+          Contact
+        </h1>
+        <p className="mb-6 text-muted">
           For inquiries, collaborations, or any questions, please reach out at:
         </p>
         <div className="flex flex-wrap items-center gap-4">
@@ -41,14 +43,14 @@ export function ContactSection({ settings, description }: ContactSectionProps) {
           </a>
           <button
             onClick={handleCopy}
-            className="rounded border border-neutral-300 px-3 py-1 text-sm hover:bg-neutral-100"
+            className="rounded border border-border px-3 py-1 text-sm hover:bg-white/10"
             aria-label="Copy email address"
           >
             {copied ? 'Copied!' : 'Copy'}
           </button>
         </div>
         {description && (
-          <div className="mt-8 max-w-2xl text-neutral-600">
+          <div className="mt-8 max-w-2xl text-muted">
             {Array.isArray(description) ? (
               <PortableText value={description} />
             ) : (
