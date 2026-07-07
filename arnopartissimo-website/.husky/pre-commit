@@ -1,0 +1,2 @@
+cd arnopartissimo-website
+npx lint-staged
