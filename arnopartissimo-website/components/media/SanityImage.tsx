@@ -15,6 +15,28 @@ interface SanityImageProps {
   height?: number;
 }
 
+function normalizeImageAsset(image: NonNullable<Media['image']>) {
+  const asset = image.asset;
+  if (!asset) {
+    return null;
+  }
+
+  const ref =
+    typeof asset === 'string'
+      ? asset
+      : '_ref' in asset && asset._ref
+        ? asset._ref
+        : '_id' in asset && asset._id
+          ? asset._id
+          : null;
+
+  if (!ref) {
+    return null;
+  }
+
+  return { ...image, asset: { _ref: ref, _type: 'reference' as const } };
+}
+
 export function SanityImage({
   media,
   className,
@@ -29,7 +51,11 @@ export function SanityImage({
     return null;
   }
 
-  const image = media.image;
+  const image = normalizeImageAsset(media.image);
+  if (!image) {
+    return null;
+  }
+
   const url = urlFor(image).auto('format').fit('max').url();
   const blurUrl = urlFor(image).width(20).quality(20).auto('format').url();
 
