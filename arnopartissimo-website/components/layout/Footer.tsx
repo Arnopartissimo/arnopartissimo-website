@@ -23,17 +23,19 @@ export function Footer({ settings }: FooterProps) {
             href={instagramUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="text-foreground hover:opacity-70 transition-opacity"
+            className="text-[10px] uppercase tracking-[0.3em] text-foreground hover:opacity-70 transition-opacity"
           >
             INSTAGRAM.
           </a>
         </FooterColumn>
 
         <FooterColumn title={availableText}>
-          <span className="text-foreground">{rightLabel}</span>
+          <span className="text-[10px] uppercase tracking-[0.3em] text-foreground">
+            {rightLabel}
+          </span>
           <a
             href={`mailto:${bookingEmail}`}
-            className="text-foreground hover:opacity-70 transition-opacity"
+            className="text-[10px] uppercase tracking-[0.3em] text-foreground hover:opacity-70 transition-opacity"
             onClick={async (e) => {
               if (navigator.clipboard) {
                 e.preventDefault();
