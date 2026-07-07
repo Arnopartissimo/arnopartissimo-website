@@ -9,15 +9,28 @@ export interface SanityAsset {
   };
 }
 
+export interface SanityImageDimensions {
+  width?: number;
+  height?: number;
+  aspectRatio?: number;
+}
+
+export type MediaImage = SanityImageSource & {
+  alt?: string;
+  caption?: string;
+  credits?: string;
+  asset?: {
+    metadata?: {
+      dimensions?: SanityImageDimensions;
+    };
+  };
+};
+
 export interface Media {
   _type: 'media';
   _key?: string;
   type: 'image' | 'video';
-  image?: SanityImageSource & {
-    alt?: string;
-    caption?: string;
-    credits?: string;
-  };
+  image?: MediaImage;
   videoUrl?: string;
   caption?: string;
   credits?: string;

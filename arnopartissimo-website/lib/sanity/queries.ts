@@ -15,6 +15,21 @@ export const pageBySlugQuery = groq`
         title,
         "slug": slug.current,
         coverImage
+      },
+      _type == 'media' => {
+        ...,
+        image {
+          ...,
+          asset->{
+            metadata {
+              dimensions {
+                width,
+                height,
+                aspectRatio
+              }
+            }
+          }
+        }
       }
     }
   }

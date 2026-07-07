@@ -8,18 +8,22 @@ interface SanityImageProps {
   media: Media;
   className?: string;
   priority?: boolean;
-  fill: boolean;
+  fill?: boolean;
   sizes?: string;
   aspectRatio?: string;
+  width?: number;
+  height?: number;
 }
 
 export function SanityImage({
   media,
   className,
   priority,
-  fill,
+  fill = false,
   sizes,
   aspectRatio,
+  width,
+  height,
 }: SanityImageProps) {
   if (media.type !== 'image' || !media.image) {
     return null;
@@ -35,11 +39,13 @@ export function SanityImage({
         src={url}
         alt={image.alt || ''}
         fill={fill}
+        width={fill ? undefined : width}
+        height={fill ? undefined : height}
         priority={priority}
         sizes={sizes}
         placeholder="blur"
         blurDataURL={blurUrl}
-        className="object-cover"
+        className={fill ? 'object-cover' : 'h-auto w-full'}
       />
       {(image.caption || image.credits) && (
         <figcaption className="sr-only">
