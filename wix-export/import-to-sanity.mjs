@@ -204,8 +204,15 @@ const siteSettingsDoc = {
 // ---------------------------------------------------------------------------
 
 async function buildPageDocs() {
-  // Home page only shows featured projects from projectsQuery; no imported sections.
-  const homeSections = [];
+  const homeImageUrls = (pagesData.index?.images || []).filter(isUsableImage);
+  const homeSections = homeImageUrls.length
+    ? await Promise.all(
+        homeImageUrls.map(async (url) => ({
+          ...(await buildMediaObject(url)),
+          _key: generateKey('home-'),
+        }))
+      )
+    : [];
 
   const creativeOrder = ['finalshow', 'upinthesky', 'delxps13', 'complicated', 'wannabeloved'];
   const creativeSections = creativeOrder
@@ -288,6 +295,11 @@ async function buildProjectDocs() {
       } else {
         gallery.push({ ...media, _key: generateKey('gallery-') });
       }
+    }
+
+    if (!coverImage) {
+      console.warn(`Skipping project ${key}: no usable images`);
+      continue;
     }
 
     const credits = meta.credits || meta.management || meta.label || '';

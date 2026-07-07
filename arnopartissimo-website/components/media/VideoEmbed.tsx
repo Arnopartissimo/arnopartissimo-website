@@ -1,9 +1,19 @@
 interface VideoEmbedProps {
   url: string;
   className?: string;
+  title?: string;
 }
 
-export function VideoEmbed({ url, className }: VideoEmbedProps) {
+function defaultTitle(url: string) {
+  try {
+    const host = new URL(url).hostname.replace(/^www\./, '');
+    return `Video from ${host}`;
+  } catch {
+    return 'Embedded video';
+  }
+}
+
+export function VideoEmbed({ url, className, title }: VideoEmbedProps) {
   const isYouTube = url.includes('youtube.com') || url.includes('youtu.be');
   const isVimeo = url.includes('vimeo.com');
 
@@ -22,7 +32,7 @@ export function VideoEmbed({ url, className }: VideoEmbedProps) {
       <div className={className}>
         <iframe
           src={embedUrl}
-          title="Video embed"
+          title={title || defaultTitle(url)}
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
           allowFullScreen
           className="aspect-video w-full"

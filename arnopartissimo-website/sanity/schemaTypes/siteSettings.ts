@@ -42,6 +42,5 @@ export const siteSettingsType = defineType({
       options: { hotspot: true },
     }),
     defineField({ name: 'analyticsId', title: 'Analytics ID', type: 'string' }),
-    defineField({ name: 'customScripts', title: 'Custom Scripts', type: 'text' }),
   ],
 });

@@ -20,7 +20,13 @@ export function CreativePage({ page }: CreativePageProps) {
             {page.sections.map((section, index) => {
               if (section._type === 'media') {
                 return section.type === 'image' ? (
-                  <SanityImage key={index} media={section} className="w-full" aspectRatio="16/9" />
+                  <SanityImage
+                    key={index}
+                    media={section}
+                    fill
+                    className="w-full"
+                    aspectRatio="16/9"
+                  />
                 ) : (
                   <VideoEmbed key={index} url={section.videoUrl || ''} className="w-full" />
                 );

@@ -93,7 +93,6 @@ export interface SiteSettings {
   footerText?: string;
   defaultSeoImage?: SanityImageSource;
   analyticsId?: string;
-  customScripts?: string;
 }
 
 export interface NavItem {

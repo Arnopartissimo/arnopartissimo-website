@@ -3,6 +3,7 @@ import { notFound } from 'next/navigation';
 import { sanityClient } from '@/lib/sanity/client';
 import { projectSlugsQuery, projectBySlugQuery } from '@/lib/sanity/queries';
 import { ProjectDetail } from '@/components/project/ProjectDetail';
+import { urlFor } from '@/lib/sanity/image';
 import { Project } from '@/types';
 
 export const dynamic = 'force-static';
@@ -24,9 +25,15 @@ export async function generateMetadata({
     return { title: 'Project Not Found' };
   }
 
+  const images = project.coverImage?.image
+    ? [{ url: urlFor(project.coverImage.image).url() }]
+    : undefined;
+
   return {
     title: `${project.title} | Arno Partissimo`,
     description: project.credits || `Project by Arno Partissimo`,
+    openGraph: { images },
+    twitter: { images },
   };
 }
 

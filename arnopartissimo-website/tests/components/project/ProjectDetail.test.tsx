@@ -87,7 +87,7 @@ describe('ProjectDetail', () => {
     const { container } = render(<ProjectDetail project={mockProject} />);
 
     expect(container.querySelectorAll('img').length).toBeGreaterThan(0);
-    expect(screen.getByTitle('Video embed')).toBeInTheDocument();
+    expect(screen.getByTitle('Video from youtube.com')).toBeInTheDocument();
   });
 
   it('renders credits and external link', () => {

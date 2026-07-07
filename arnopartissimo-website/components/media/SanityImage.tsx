@@ -8,7 +8,7 @@ interface SanityImageProps {
   media: Media;
   className?: string;
   priority?: boolean;
-  fill?: boolean;
+  fill: boolean;
   sizes?: string;
   aspectRatio?: string;
 }
