@@ -1,0 +1,113 @@
+{
+  "index": {
+    "url": "https://www.arnopartissimo.com/",
+    "slug": "index",
+    "title": "Home | Arno Partissimo.",
+    "metaDescription": "",
+    "ogTitle": "Home | Arno Partissimo.",
+    "ogDescription": "",
+    "ogImage": "https://static.wixstatic.com/media/c36c82_429ca304a9134c3f9f37d78da5af5767%7Emv2.jpg/v1/fit/w_2500,h_1330,al_c/c36c82_429ca304a9134c3f9f37d78da5af5767%7Emv2.jpg",
+    "favicon": "https://static.wixstatic.com/media/c36c82_55120614a4bb4f14892a64d06259f6e9%7Emv2.jpg/v1/fill/w_32%2Ch_32%2Clg_1%2Cusm_0.66_1.00_0.01/c36c82_55120614a4bb4f14892a64d06259f6e9%7Emv2.jpg",
+    "canonical": "https://www.arnopartissimo.com",
+    "jsonLd": [
+      {
+        "@context": "https://schema.org/",
+        "@type": "WebSite",
+        "url": "https://www.arnopartissimo.com/",
+        "potentialAction": {
+          "@type": "SearchAction",
+          "target": {
+            "@type": "EntryPoint",
+            "urlTemplate": "https://www.arnopartissimo.com/search?q={search_term}"
+          },
+          "query-input": "required name=search_term"
+        }
+      },
+      {
+        "@context": "https://schema.org/",
+        "@type": "WebSite",
+        "name": "Arno Partissimo.",
+        "url": "https://www.arnopartissimo.com"
+      }
+    ],
+    "images": [
+      "https://static.wixstatic.com/media/c36c82_099083d5be904dcc9334e65e19264421~mv2.jpg/v1/fit/w_1440,h_1803,q_60,enc_avif,quality_auto/c36c82_099083d5be904dcc9334e65e19264421~mv2.jpg",
+      "https://static.wixstatic.com/media/c36c82_0dea13e97bb5458ca782f04617ecb3c4~mv2.webp/v1/fit/w_1440,h_1803,q_60,enc_avif,quality_auto/c36c82_0dea13e97bb5458ca782f04617ecb3c4~mv2.webp",
+      "https://static.wixstatic.com/media/c36c82_125553e2dd684ba98862815e5c2cfa8a~mv2.jpg/v1/fit/w_1440,h_1803,q_60,enc_avif,quality_auto/c36c82_125553e2dd684ba98862815e5c2cfa8a~mv2.jpg",
+      "https://static.wixstatic.com/media/c36c82_161518820e2f4e9abff16d4b0764e6b6~mv2.jpg/v1/fit/w_1438,h_1800,q_60,enc_avif,quality_auto/c36c82_161518820e2f4e9abff16d4b0764e6b6~mv2.jpg",
+      "https://static.wixstatic.com/media/c36c82_3957784acde644798002875701ffd2b1~mv2.jpg/v1/fit/w_1440,h_2562,q_60,enc_avif,quality_auto/c36c82_3957784acde644798002875701ffd2b1~mv2.jpg",
+      "https://static.wixstatic.com/media/c36c82_39b96dff96ee4d509754a97db64608c0~mv2.jpg/v1/fit/w_1440,h_1800,q_60,enc_avif,quality_auto/c36c82_39b96dff96ee4d509754a97db64608c0~mv2.jpg",
+      "https://static.wixstatic.com/media/c36c82_41f88219361248c9a85937ae23cc71c8~mv2.jpg/v1/fit/w_1440,h_1800,q_60,enc_avif,quality_auto/c36c82_41f88219361248c9a85937ae23cc71c8~mv2.jpg",
+      "https://static.wixstatic.com/media/c36c82_429ca304a9134c3f9f37d78da5af5767~mv2.jpg/v1/fit/w_2500,h_1330,al_c/c36c82_429ca304a9134c3f9f37d78da5af5767~mv2.jpg",
+      "https://static.wixstatic.com/media/c36c82_464a58ccfdc8455d83381b4e07b5fd00~mv2.jpg/v1/fit/w_1440,h_1920,q_60,enc_avif,quality_auto/c36c82_464a58ccfdc8455d83381b4e07b5fd00~mv2.jpg",
+      "https://static.wixstatic.com/media/c36c82_477ba779e93c4572999696e938a07dad~mv2.webp/v1/fit/w_1440,h_1803,q_60,enc_avif,quality_auto/c36c82_477ba779e93c4572999696e938a07dad~mv2.webp",
+      "https://static.wixstatic.com/media/c36c82_5586ee1ddf4e448697e578e1c782938a~mv2.webp/v1/fit/w_1440,h_1920,q_60,enc_avif,quality_auto/c36c82_5586ee1ddf4e448697e578e1c782938a~mv2.webp",
+      "https://static.wixstatic.com/media/c36c82_569a908f17674da8984c072c1e21ccf1~mv2.jpg/v1/fit/w_1440,h_1803,q_60,enc_avif,quality_auto/c36c82_569a908f17674da8984c072c1e21ccf1~mv2.jpg",
+      "https://static.wixstatic.com/media/c36c82_60b15fb929d24193b1ec69603dc24fe6~mv2.jpg/v1/fit/w_1440,h_1803,q_60,enc_avif,quality_auto/c36c82_60b15fb929d24193b1ec69603dc24fe6~mv2.jpg",
+      "https://static.wixstatic.com/media/c36c82_6366c6e6f2684046b16c6dc6550bff16~mv2.jpg/v1/fit/w_1440,h_1800,q_60,enc_avif,quality_auto/c36c82_6366c6e6f2684046b16c6dc6550bff16~mv2.jpg",
+      "https://static.wixstatic.com/media/c36c82_9272fa74580a41c681fbe1439cf1bf8b~mv2.webp/v1/fit/w_1440,h_1803,q_60,enc_avif,quality_auto/c36c82_9272fa74580a41c681fbe1439cf1bf8b~mv2.webp",
+      "https://static.wixstatic.com/media/c36c82_b2057b5b6fa54993a09883ae78607d0a~mv2.webp/v1/fit/w_1440,h_1920,q_60,enc_avif,quality_auto/c36c82_b2057b5b6fa54993a09883ae78607d0a~mv2.webp",
+      "https://static.wixstatic.com/media/c36c82_bedad6ea325949ff8c5fd77d76d853ab~mv2.jpg/v1/fit/w_1440,h_2163,q_60,enc_avif,quality_auto/c36c82_bedad6ea325949ff8c5fd77d76d853ab~mv2.jpg",
+      "https://static.wixstatic.com/media/c36c82_c2cc14f843164e2eb8aae4926b50851c~mv2.jpg/v1/fit/w_1440,h_1803,q_60,enc_avif,quality_auto/c36c82_c2cc14f843164e2eb8aae4926b50851c~mv2.jpg",
+      "https://static.wixstatic.com/media/c36c82_c5f3e73f7f9f422a97d0a5d80ad17e68~mv2.webp/v1/fit/w_1440,h_1920,q_60,enc_avif,quality_auto/c36c82_c5f3e73f7f9f422a97d0a5d80ad17e68~mv2.webp",
+      "https://static.wixstatic.com/media/c36c82_c7bc6835e5fe45d3923b32ff5f5f6983~mv2.jpg/v1/fit/w_1440,h_1800,q_60,enc_avif,quality_auto/c36c82_c7bc6835e5fe45d3923b32ff5f5f6983~mv2.jpg",
+      "https://static.wixstatic.com/media/c36c82_d72d016fe0c44c7c97851ee27217fd6d~mv2.jpg/v1/fit/w_1440,h_1803,q_60,enc_avif,quality_auto/c36c82_d72d016fe0c44c7c97851ee27217fd6d~mv2.jpg",
+      "https://static.wixstatic.com/media/c36c82_e27d8526fd3d4cb6b38abf62f5508d41~mv2.jpg/v1/fit/w_1440,h_1803,q_60,enc_avif,quality_auto/c36c82_e27d8526fd3d4cb6b38abf62f5508d41~mv2.jpg",
+      "https://static.wixstatic.com/media/c36c82_e59146027cf54e85a97c3bbaefa04919~mv2.webp/v1/fit/w_1440,h_1803,q_60,enc_avif,quality_auto/c36c82_e59146027cf54e85a97c3bbaefa04919~mv2.webp",
+      "https://static.wixstatic.com/media/c36c82_eb21ee82bccb47d581668c7aeee47d41~mv2.webp/v1/fit/w_1440,h_1800,q_60,enc_avif,quality_auto/c36c82_eb21ee82bccb47d581668c7aeee47d41~mv2.webp",
+      "https://static.wixstatic.com/media/c36c82_f55f7e497c07469b81a140da23c6938c~mv2.webp/v1/fit/w_1440,h_1920,q_60,enc_avif,quality_auto/c36c82_f55f7e497c07469b81a140da23c6938c~mv2.webp",
+      "https://static.wixstatic.com/media/c36c82_fd93227136b349f89324c7ef009dc24f~mv2.jpg/v1/fit/w_1212,h_1515,q_60,enc_avif,quality_auto/c36c82_fd93227136b349f89324c7ef009dc24f~mv2.jpg"
+    ],
+    "text": "Home | Arno Partissimo. top of page ARNO PARTISSIMO. PHOTO. CREATIVE DIRECTION. CONTACT STORE. MY ACCOUNT FAQ AVAILABLE WORLDWIDE BOOKING / GENERAL INQUIRIES ARNO@ARNOPARTISSIMO.COM ARNO PARTISSIMO INSTAGRAM. ARNO PARTISSIMO INSTAGRAM. AVAILABLE WORLDWIDE BOOKING / GENERAL INQUIRIES ARNO@ARNOPARTISSIMO.COM PHOTO. CREATIVE DIRECTION. CONTACT STORE. bottom of page",
+    "rawHtmlPath": "pages/index.html"
+  },
+  "home": {
+    "url": "https://www.arnopartissimo.com/home",
+    "slug": "home",
+    "title": "exemple | Arno Partissimo.",
+    "metaDescription": "",
+    "ogTitle": "exemple | Arno Partissimo.",
+    "ogDescription": "",
+    "ogImage": "https://static.wixstatic.com/media/c36c82_429ca304a9134c3f9f37d78da5af5767%7Emv2.jpg/v1/fit/w_2500,h_1330,al_c/c36c82_429ca304a9134c3f9f37d78da5af5767%7Emv2.jpg",
+    "favicon": "https://static.wixstatic.com/media/c36c82_55120614a4bb4f14892a64d06259f6e9%7Emv2.jpg/v1/fill/w_32%2Ch_32%2Clg_1%2Cusm_0.66_1.00_0.01/c36c82_55120614a4bb4f14892a64d06259f6e9%7Emv2.jpg",
+    "canonical": "https://www.arnopartissimo.com/home",
+    "jsonLd": [],
+    "images": [
+      "https://static.wixstatic.com/media/c36c82_429ca304a9134c3f9f37d78da5af5767~mv2.jpg/v1/fit/w_2500,h_1330,al_c/c36c82_429ca304a9134c3f9f37d78da5af5767~mv2.jpg"
+    ],
+    "text": "exemple | Arno Partissimo. top of page ARNO PARTISSIMO. PHOTO. CREATIVE DIRECTION. CONTACT STORE. Shop The Top Brand Electronic Get more for your money with every purchase! Shop Now Sale is on! Sale is on! New Products View More We don’t have any products to show here right now. Top Sellers View More We don’t have any products to show here right now. Product Spotlight Pantony 6P Activity Tracker 85$ Shop Now Studio 8 Portable Bluetooth Speaker 85$ Shop Now Shop By Category Mobile and Wearable Tech Shop Now Drones and Cameras Shop Now Headphones and Speakers Shop Now Computers Shop Now Tablets Shop Now TV and Home Cinema Shop Now Reviews 4.5 \"Found the perfect laptop in minutes!\" John S. 4.5 \"Fast delivery, great customer service! Sarah K. 4.5 \"Huge selection, competitive prices. Won't shop electronics anywhere else.\" David L. 4.5 \"Ordered a new phone yesterday, arrived today!\" Michael T. 4.5 \"Clear descriptions, easy checkout. Great online shopping experience.\" Jessica A. 4.5 \"Top brand selection, reliable warranty options. Perfect!\" Charles W. 4.5 \"Frequent sales and discounts! Saved a bundle on my new headphones.\" Anna M. 4.5 \"Beautiful website, so easy to navigate. Will definitely be back!\" Daniel P. 4.8 / 5 out of 430+ reviews Customer Reviews SMRT This is the space to introduce visitors to the business or brand. Briefly explain who's behind it, what it does and what makes it unique. Share its core values and what this site has to offer. Subscribe to Our Newsletter Shop PHOTO. CREATIVE DIRECTION. CONTACT STORE. Legal Terms & Conditions Privacy Policy Shipping Policy Refund Policy Accessibility Statement ​ FAQ Headquarters 500 Terry Francine Street San Francisco, CA 94158 info@mysite.com 123-456-7890 Socials TikTok Instagram Facebook YouTube Pay Securely with © 2035 by SMRT. Built on Wix Studio™ ARNO PARTISSIMO INSTAGRAM. AVAILABLE WORLDWIDE BOOKING / GENERAL INQUIRIES ARNO@ARNOPARTISSIMO.COM PHOTO. CREATIVE DIRECTION. CONTACT STORE. Like bottom of page",
+    "rawHtmlPath": "pages/home.html"
+  },
+  "creative": {
+    "url": "https://www.arnopartissimo.com/creative",
+    "slug": "creative",
+    "title": "CREATIVE DIRECTION. | Arno Partissimo.",
+    "metaDescription": "",
+    "ogTitle": "CREATIVE DIRECTION. | Arno Partissimo.",
+    "ogDescription": "",
+    "ogImage": "https://static.wixstatic.com/media/c36c82_429ca304a9134c3f9f37d78da5af5767%7Emv2.jpg/v1/fit/w_2500,h_1330,al_c/c36c82_429ca304a9134c3f9f37d78da5af5767%7Emv2.jpg",
+    "favicon": "https://static.wixstatic.com/media/c36c82_55120614a4bb4f14892a64d06259f6e9%7Emv2.jpg/v1/fill/w_32%2Ch_32%2Clg_1%2Cusm_0.66_1.00_0.01/c36c82_55120614a4bb4f14892a64d06259f6e9%7Emv2.jpg",
+    "canonical": "https://www.arnopartissimo.com/creative",
+    "jsonLd": [],
+    "images": [],
+    "text": "CREATIVE DIRECTION. | Arno Partissimo. top of page ARNO PARTISSIMO. PHOTO. CREATIVE DIRECTION. CONTACT STORE. DJ SNAKE - STADE DE FRANCE HENRI PFR - UP IN THE SKY DELL XPS SERIES DJ SNAKE - COMPLICATED HENRI PFR - WANNA BE LOVED ALEX GERMYS - WE KNOW NOTHING MY ACCOUNT FAQ AVAILABLE WORLDWIDE BOOKING / GENERAL INQUIRIES ARNO@ARNOPARTISSIMO.COM ARNO PARTISSIMO INSTAGRAM. ARNO PARTISSIMO INSTAGRAM. AVAILABLE WORLDWIDE BOOKING / GENERAL INQUIRIES ARNO@ARNOPARTISSIMO.COM PHOTO. CREATIVE DIRECTION. CONTACT STORE. bottom of page",
+    "rawHtmlPath": "pages/creative.html"
+  },
+  "contact": {
+    "url": "https://www.arnopartissimo.com/contact",
+    "slug": "contact",
+    "title": "CONTACT | Arno Partissimo.",
+    "metaDescription": "",
+    "ogTitle": "CONTACT | Arno Partissimo.",
+    "ogDescription": "",
+    "ogImage": "https://static.wixstatic.com/media/c36c82_429ca304a9134c3f9f37d78da5af5767%7Emv2.jpg/v1/fit/w_2500,h_1330,al_c/c36c82_429ca304a9134c3f9f37d78da5af5767%7Emv2.jpg",
+    "favicon": "https://static.wixstatic.com/media/c36c82_55120614a4bb4f14892a64d06259f6e9%7Emv2.jpg/v1/fill/w_32%2Ch_32%2Clg_1%2Cusm_0.66_1.00_0.01/c36c82_55120614a4bb4f14892a64d06259f6e9%7Emv2.jpg",
+    "canonical": "https://www.arnopartissimo.com/contact",
+    "jsonLd": [],
+    "images": [
+      "https://static.wixstatic.com/media/c36c82_429ca304a9134c3f9f37d78da5af5767~mv2.jpg/v1/fit/w_2500,h_1330,al_c/c36c82_429ca304a9134c3f9f37d78da5af5767~mv2.jpg"
+    ],
+    "text": "CONTACT | Arno Partissimo. top of page ARNO PARTISSIMO. PHOTO. CREATIVE DIRECTION. CONTACT STORE. BOOKING/GENERAL INQUIRIES ARNO@ARNOPARTISSIMO.COM Since 2016, Arno Partissimo has been shaping the world of music photography, Working behind the scenes with some of the most recognized names in the industry. His ability to capture the raw energy of live performances and intimate backstage moments has made him a trusted visual artist for major players like DJ Snake, Warner Music, Universal Music, and Tomorrowland. With an eye for detail and an intuitive approach, Arno’s work elevates every project, Offering a glimpse into the true spirit of artists while letting the imagery speak for itself. From CNN to Daily Mail, New York Post, Business Insider, and Yahoo, Arno Partissimo’s photography has been widely featured across some of the world’s most influential publications, reflecting his impact on the industry. INSTAGRAM. BOOKING/GENERAL INQUIRIES ARNO@ARNOPARTISSIMO.COM ARNO PARTISSIMO INSTAGRAM. AVAILABLE WORLDWIDE BOOKING / GENERAL INQUIRIES ARNO@ARNOPARTISSIMO.COM MY ACCOUNT FAQ AVAILABLE WORLDWIDE BOOKING / GENERAL INQUIRIES ARNO@ARNOPARTISSIMO.COM ARNO PARTISSIMO INSTAGRAM. PHOTO. CREATIVE DIRECTION. CONTACT STORE. bottom of page",
+    "rawHtmlPath": "pages/contact.html"
+  }
+}
