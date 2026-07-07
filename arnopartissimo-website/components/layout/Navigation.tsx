@@ -3,7 +3,6 @@
 import { useState } from 'react';
 import { usePathname } from 'next/navigation';
 import { NavLink } from '@/components/design-system/NavLink';
-import { cn } from '@/lib/utils/cn';
 
 const navItems = [
   { label: 'PHOTO.', href: '/' },
