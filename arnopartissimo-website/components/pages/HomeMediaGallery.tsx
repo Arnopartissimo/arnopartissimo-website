@@ -37,12 +37,12 @@ export function HomeMediaGallery({ sections }: HomeMediaGalleryProps) {
   }
 
   return (
-    <Container>
+    <Container className="px-2 sm:px-3 lg:px-4">
       <div className="home-gallery py-12">
         {mediaSections.map((section, index) => (
           <div
             key={section._key || `home-media-${index}`}
-            className="home-gallery-item transition-transform duration-200 hover:scale-[0.985] hover:opacity-90"
+            className="home-gallery-item transition-transform duration-200 hover:scale-[0.985]"
           >
             {section.type === 'image' ? (
               <SanityImage
