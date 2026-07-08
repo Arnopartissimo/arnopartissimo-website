@@ -46,7 +46,7 @@ export function ContactSection({ settings, description, image }: ContactSectionP
                 media={image}
                 fill
                 sizes="(max-width: 1024px) 100vw, 45vw"
-                className="object-cover"
+                className="h-full w-full object-cover"
               />
             </div>
           )}
