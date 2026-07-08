@@ -2,6 +2,7 @@ import { Media } from '@/types';
 import { SanityImage } from '@/components/media/SanityImage';
 import { VideoEmbed } from '@/components/media/VideoEmbed';
 import { cn } from '@/lib/utils/cn';
+import { StaggerContainer, StaggerItem } from '@/components/ui/FadeIn';
 
 interface ProjectGalleryProps {
   items: Media[];
@@ -9,13 +10,13 @@ interface ProjectGalleryProps {
 
 export function ProjectGallery({ items }: ProjectGalleryProps) {
   return (
-    <div className="flex flex-wrap gap-4">
+    <StaggerContainer className="flex flex-wrap gap-4" staggerDelay={0.1}>
       {items.map((item, index) => {
         const isSquare = item.layout === 'square';
 
         if (item.type === 'image') {
           return (
-            <div
+            <StaggerItem
               key={item._key || index}
               data-testid="gallery-item"
               className={cn(
@@ -23,26 +24,30 @@ export function ProjectGallery({ items }: ProjectGalleryProps) {
                 isSquare ? 'aspect-square w-[calc(50%-8px)]' : 'aspect-video w-full'
               )}
             >
-              <SanityImage
-                media={item}
-                fill
-                sizes={isSquare ? '50vw' : '100vw'}
-                className="h-full w-full object-cover"
-              />
-            </div>
+              <div className="h-full w-full">
+                <SanityImage
+                  media={item}
+                  fill
+                  sizes={isSquare ? '50vw' : '100vw'}
+                  className="h-full w-full object-cover"
+                />
+              </div>
+            </StaggerItem>
           );
         }
 
         return (
-          <div
+          <StaggerItem
             key={item._key || index}
             data-testid="gallery-item"
             className={cn(isSquare ? 'w-[calc(50%-8px)]' : 'w-full')}
           >
-            <VideoEmbed url={item.videoUrl || ''} className="h-auto w-full" />
-          </div>
+            <div>
+              <VideoEmbed url={item.videoUrl || ''} className="h-auto w-full" />
+            </div>
+          </StaggerItem>
         );
       })}
-    </div>
+    </StaggerContainer>
   );
 }
