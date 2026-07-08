@@ -30,6 +30,7 @@ export interface Media {
   _type: 'media';
   _key?: string;
   type: 'image' | 'video';
+  layout?: 'wide' | 'square';
   image?: MediaImage;
   videoUrl?: string;
   caption?: string;
