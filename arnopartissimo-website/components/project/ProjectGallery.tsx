@@ -17,6 +17,7 @@ export function ProjectGallery({ items }: ProjectGalleryProps) {
           return (
             <div
               key={item._key || index}
+              data-testid="gallery-item"
               className={cn(
                 'relative overflow-hidden',
                 isSquare ? 'aspect-square w-[calc(50%-8px)]' : 'aspect-video w-full'
@@ -33,7 +34,11 @@ export function ProjectGallery({ items }: ProjectGalleryProps) {
         }
 
         return (
-          <div key={item._key || index} className={cn(isSquare ? 'w-[calc(50%-8px)]' : 'w-full')}>
+          <div
+            key={item._key || index}
+            data-testid="gallery-item"
+            className={cn(isSquare ? 'w-[calc(50%-8px)]' : 'w-full')}
+          >
             <VideoEmbed url={item.videoUrl || ''} className="h-auto w-full" />
           </div>
         );
