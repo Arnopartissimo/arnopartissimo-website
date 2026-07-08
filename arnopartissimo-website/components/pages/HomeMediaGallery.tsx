@@ -42,7 +42,7 @@ export function HomeMediaGallery({ sections }: HomeMediaGalleryProps) {
   }
 
   return (
-    <Container className="max-w-none px-2 sm:px-3 lg:px-5">
+    <Container className="max-w-none px-4 sm:px-6 lg:px-10">
       <div className="py-12">
         <ResponsiveMasonry columnsCountBreakPoints={{ 350: 1, 640: 2, 1024: 4 }}>
           <Masonry gutter="15px">
