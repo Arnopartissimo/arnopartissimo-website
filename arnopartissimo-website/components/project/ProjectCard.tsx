@@ -23,7 +23,7 @@ export function ProjectCard({ project, priority }: ProjectCardProps) {
   const hasCoverImage = isValidImageMedia(project.coverImage);
 
   return (
-    <Link href={`/creative/${project.slug}`} className="group block">
+    <Link href={`/projects/${project.slug}`} className="group block">
       <div className="relative aspect-[4/5] overflow-hidden bg-neutral-800">
         {hasCoverImage ? (
           <SanityImage

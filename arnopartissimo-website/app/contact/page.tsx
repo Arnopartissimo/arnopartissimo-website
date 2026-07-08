@@ -1,7 +1,7 @@
 import { sanityClient } from '@/lib/sanity/client';
 import { siteSettingsQuery, pageBySlugQuery } from '@/lib/sanity/queries';
 import { ContactSection } from '@/components/pages/ContactSection';
-import { SiteSettings, Page } from '@/types';
+import { SiteSettings, Page, Media } from '@/types';
 
 export const dynamic = 'force-static';
 
@@ -22,6 +22,10 @@ export default async function ContactRoute() {
 
   const textBlockSection = page?.sections?.find((section) => section._type === 'textBlock');
   const description = textBlockSection?.text ?? page?.metaDescription;
+  const imageSection = page?.sections?.find(
+    (section): section is Media & { _key: string } =>
+      section._type === 'media' && section.type === 'image'
+  );
 
-  return <ContactSection settings={settings} description={description} />;
+  return <ContactSection settings={settings} description={description} image={imageSection} />;
 }

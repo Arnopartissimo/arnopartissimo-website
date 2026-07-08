@@ -4,6 +4,10 @@ import { describe, expect, it, vi, beforeEach, afterEach } from 'vitest';
 import { ContactSection } from '@/components/pages/ContactSection';
 import { SiteSettings } from '@/types';
 
+vi.mock('@/components/media/SanityImage', () => ({
+  SanityImage: () => <div data-testid="sanity-image" />,
+}));
+
 const mockSettings: SiteSettings = {
   _id: 'settings',
   title: 'Arno Partissimo',

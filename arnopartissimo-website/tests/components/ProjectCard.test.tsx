@@ -32,6 +32,6 @@ describe('ProjectCard', () => {
     render(<ProjectCard project={mockProject} />);
 
     expect(screen.getByText('Test Project')).toBeInTheDocument();
-    expect(screen.getByRole('link')).toHaveAttribute('href', '/creative/test-project');
+    expect(screen.getByRole('link')).toHaveAttribute('href', '/projects/test-project');
   });
 });
