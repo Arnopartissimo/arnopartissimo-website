@@ -6,7 +6,6 @@ import { PageSection, Media } from '@/types';
 import { SanityImage } from '@/components/media/SanityImage';
 import { VideoEmbed } from '@/components/media/VideoEmbed';
 import { Container } from '@/components/ui/Container';
-import { StaggerContainer, StaggerItem } from '@/components/ui/FadeIn';
 
 interface HomeMediaGalleryProps {
   sections?: PageSection[];
@@ -46,27 +45,26 @@ export function HomeMediaGallery({ sections }: HomeMediaGalleryProps) {
       <div className="py-12">
         <ResponsiveMasonry columnsCountBreakPoints={{ 350: 1, 640: 2, 1024: 4 }}>
           <Masonry gutter="15px">
-            <StaggerContainer className="contents" staggerDelay={0.06}>
-              {mediaSections.map((section, index) => (
-                <StaggerItem
-                  key={section._key || `home-media-${index}`}
-                  className="transition-transform duration-200 hover:scale-[0.985]"
-                >
-                  {section.type === 'image' ? (
-                    <SanityImage
-                      media={section}
-                      width={getImageDimensions(section).width}
-                      height={getImageDimensions(section).height}
-                      priority={index < 6}
-                      sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
-                      className="h-auto w-full"
-                    />
-                  ) : (
-                    <VideoEmbed url={section.videoUrl || ''} className="h-auto w-full" />
-                  )}
-                </StaggerItem>
-              ))}
-            </StaggerContainer>
+            {mediaSections.map((section, index) => (
+              <div
+                key={section._key || `home-media-${index}`}
+                className="animate-fade-in-up transition-transform duration-200 hover:scale-[0.985]"
+                style={{ '--fade-delay': `${index * 0.06}s` } as React.CSSProperties}
+              >
+                {section.type === 'image' ? (
+                  <SanityImage
+                    media={section}
+                    width={getImageDimensions(section).width}
+                    height={getImageDimensions(section).height}
+                    priority={index < 6}
+                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
+                    className="h-auto w-full"
+                  />
+                ) : (
+                  <VideoEmbed url={section.videoUrl || ''} className="h-auto w-full" />
+                )}
+              </div>
+            ))}
           </Masonry>
         </ResponsiveMasonry>
       </div>

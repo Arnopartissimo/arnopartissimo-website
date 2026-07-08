@@ -41,7 +41,7 @@ export function ContactSection({ settings, description, image }: ContactSectionP
           )}
 
           {image && image.type === 'image' && (
-            <div className="relative aspect-[3/4] w-full max-w-lg lg:ml-auto">
+            <div className="relative aspect-[3/2] w-full max-w-xl lg:ml-auto">
               <SanityImage
                 media={image}
                 fill
