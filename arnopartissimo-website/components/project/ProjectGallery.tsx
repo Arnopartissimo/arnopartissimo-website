@@ -1,6 +1,7 @@
 import { Media } from '@/types';
 import { SanityImage } from '@/components/media/SanityImage';
 import { VideoEmbed } from '@/components/media/VideoEmbed';
+import { cn } from '@/lib/utils/cn';
 
 interface ProjectGalleryProps {
   items: Media[];
@@ -8,21 +9,35 @@ interface ProjectGalleryProps {
 
 export function ProjectGallery({ items }: ProjectGalleryProps) {
   return (
-    <div className="space-y-8">
-      {items.map((item, index) =>
-        item.type === 'image' ? (
-          <SanityImage
-            key={item._key || index}
-            media={item}
-            className="w-full"
-            aspectRatio="16/9"
-            sizes="100vw"
-            fill
-          />
-        ) : (
-          <VideoEmbed key={item._key || index} url={item.videoUrl || ''} className="w-full" />
-        )
-      )}
+    <div className="flex flex-wrap gap-4">
+      {items.map((item, index) => {
+        const isSquare = item.layout === 'square';
+
+        if (item.type === 'image') {
+          return (
+            <div
+              key={item._key || index}
+              className={cn(
+                'relative overflow-hidden',
+                isSquare ? 'aspect-square w-[calc(50%-8px)]' : 'aspect-video w-full'
+              )}
+            >
+              <SanityImage
+                media={item}
+                fill
+                sizes={isSquare ? '50vw' : '100vw'}
+                className="h-full w-full object-cover"
+              />
+            </div>
+          );
+        }
+
+        return (
+          <div key={item._key || index} className={cn(isSquare ? 'w-[calc(50%-8px)]' : 'w-full')}>
+            <VideoEmbed url={item.videoUrl || ''} className="h-auto w-full" />
+          </div>
+        );
+      })}
     </div>
   );
 }
