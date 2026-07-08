@@ -1,7 +1,7 @@
 import { describe, it, expect, vi } from 'vitest';
 import { render, screen } from '@testing-library/react';
 import { ProjectGallery } from '@/components/project/ProjectGallery';
-import { Media } from '@/types';
+import { Media, MediaLayout } from '@/types';
 
 vi.mock('@/components/media/SanityImage', () => ({
   SanityImage: ({ className }: { className?: string }) => (
@@ -9,9 +9,15 @@ vi.mock('@/components/media/SanityImage', () => ({
   ),
 }));
 
-const makeImage = (layout?: 'wide' | 'square'): Media => ({
+vi.mock('@/components/media/VideoEmbed', () => ({
+  VideoEmbed: ({ url, className }: { url?: string; className?: string }) => (
+    <div data-testid="video-embed" data-url={url} className={className} />
+  ),
+}));
+
+const makeImage = (layout?: MediaLayout, key = 'image-key'): Media => ({
   _type: 'media',
-  _key: Math.random().toString(),
+  _key: key,
   type: 'image',
   layout,
   image: {
@@ -20,9 +26,9 @@ const makeImage = (layout?: 'wide' | 'square'): Media => ({
   },
 });
 
-const makeVideo = (layout?: 'wide' | 'square'): Media => ({
+const makeVideo = (layout?: MediaLayout, key = 'video-key'): Media => ({
   _type: 'media',
-  _key: Math.random().toString(),
+  _key: key,
   type: 'video',
   layout,
   videoUrl: 'https://www.youtube.com/watch?v=dQw4w9WgXcQ',
@@ -60,5 +66,24 @@ describe('ProjectGallery', () => {
     render(<ProjectGallery items={[makeVideo('wide')]} />);
     const item = screen.getByTestId('gallery-item');
     expect(item).toHaveClass('w-full');
+  });
+
+  it('mixes wide and square items with correct wrapper classes', () => {
+    render(
+      <ProjectGallery
+        items={[
+          makeImage('wide', 'image-wide'),
+          makeImage('square', 'image-square'),
+          makeVideo('wide', 'video-wide'),
+        ]}
+      />
+    );
+    const items = screen.getAllByTestId('gallery-item');
+    expect(items).toHaveLength(3);
+    expect(items[0]).toHaveClass('w-full');
+    expect(items[0]).toHaveClass('aspect-video');
+    expect(items[1]).toHaveClass('w-[calc(50%-8px)]');
+    expect(items[1]).toHaveClass('aspect-square');
+    expect(items[2]).toHaveClass('w-full');
   });
 });

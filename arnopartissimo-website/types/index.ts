@@ -26,11 +26,13 @@ export type MediaImage = SanityImageSource & {
   };
 };
 
+export type MediaLayout = 'wide' | 'square';
+
 export interface Media {
   _type: 'media';
   _key?: string;
   type: 'image' | 'video';
-  layout?: 'wide' | 'square';
+  layout?: MediaLayout;
   image?: MediaImage;
   videoUrl?: string;
   caption?: string;
