@@ -28,10 +28,14 @@ const mockProject = {
 };
 
 describe('ProjectCard', () => {
-  it('renders the title and links to the creative project page', () => {
+  it('renders the title, thumbnail and links to the creative project page', () => {
     render(<ProjectCard project={mockProject} />);
 
     expect(screen.getByText('Test Project')).toBeInTheDocument();
     expect(screen.getByRole('link')).toHaveAttribute('href', '/projects/test-project');
+    expect(screen.getByRole('img')).toHaveAttribute(
+      'src',
+      expect.stringContaining('cdn.sanity.io')
+    );
   });
 });

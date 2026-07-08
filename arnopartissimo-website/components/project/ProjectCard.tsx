@@ -24,14 +24,14 @@ export function ProjectCard({ project, priority }: ProjectCardProps) {
 
   return (
     <Link href={`/projects/${project.slug}`} className="group block">
-      <div className="relative aspect-[4/5] overflow-hidden bg-neutral-800">
+      <div className="relative aspect-[4/5] w-full overflow-hidden bg-neutral-800">
         {hasCoverImage ? (
           <SanityImage
             media={project.coverImage}
             fill
             priority={priority}
             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-            className="transition-transform duration-200 group-hover:scale-[0.985]"
+            className="h-full w-full object-cover transition-transform duration-200 group-hover:scale-[0.985]"
           />
         ) : (
           <div className="absolute inset-0 bg-neutral-800" />
