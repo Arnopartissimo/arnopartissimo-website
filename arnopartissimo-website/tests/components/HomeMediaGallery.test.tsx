@@ -1,3 +1,4 @@
+import React from 'react';
 import { render, screen } from '@testing-library/react';
 import { describe, expect, it, vi } from 'vitest';
 
@@ -11,6 +12,15 @@ vi.mock('@/lib/sanity/image', () => ({
       quality: () => ({ auto: () => ({ url: () => 'https://cdn.sanity.io/blur.jpg' }) }),
     }),
   }),
+}));
+
+vi.mock('react-responsive-masonry', () => ({
+  default: ({ children }: { children: React.ReactNode }) => (
+    <div data-testid="masonry">{children}</div>
+  ),
+  ResponsiveMasonry: ({ children }: { children: React.ReactNode }) => (
+    <div data-testid="responsive-masonry">{children}</div>
+  ),
 }));
 
 const sections: PageSection[] = [
@@ -38,10 +48,10 @@ const sections: PageSection[] = [
 
 describe('HomeMediaGallery', () => {
   it('renders gallery items', () => {
-    const { container } = render(<HomeMediaGallery sections={sections} />);
+    render(<HomeMediaGallery sections={sections} />);
     expect(screen.getAllByRole('img').length).toBe(2);
-    expect(container.querySelector('.home-gallery')).toBeInTheDocument();
-    expect(container.querySelectorAll('.home-gallery-item').length).toBe(2);
+    expect(screen.getByTestId('responsive-masonry')).toBeInTheDocument();
+    expect(screen.getByTestId('masonry')).toBeInTheDocument();
   });
 
   it('shows placeholder when empty', () => {
