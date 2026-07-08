@@ -20,6 +20,19 @@ export const mediaType = defineType({
       validation: (Rule) => Rule.required(),
     }),
     defineField({
+      name: 'layout',
+      title: 'Layout',
+      type: 'string',
+      options: {
+        list: [
+          { title: 'Wide', value: 'wide' },
+          { title: 'Square', value: 'square' },
+        ],
+        layout: 'radio',
+      },
+      initialValue: 'wide',
+    }),
+    defineField({
       name: 'image',
       title: 'Image',
       type: 'image',
