@@ -37,7 +37,7 @@ export function HomeMediaGallery({ sections }: HomeMediaGalleryProps) {
   }
 
   return (
-    <Container className="px-2 sm:px-3 lg:px-4">
+    <Container className="px-1 sm:px-2 lg:px-3">
       <div className="home-gallery py-12">
         {mediaSections.map((section, index) => (
           <div
