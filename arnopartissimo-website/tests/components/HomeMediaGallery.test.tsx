@@ -38,8 +38,10 @@ const sections: PageSection[] = [
 
 describe('HomeMediaGallery', () => {
   it('renders gallery items', () => {
-    render(<HomeMediaGallery sections={sections} />);
+    const { container } = render(<HomeMediaGallery sections={sections} />);
     expect(screen.getAllByRole('img').length).toBe(2);
+    expect(container.querySelector('.home-gallery')).toBeInTheDocument();
+    expect(container.querySelectorAll('.home-gallery-item').length).toBe(2);
   });
 
   it('shows placeholder when empty', () => {

@@ -22,3 +22,25 @@ body {
   color: var(--foreground);
   font-family: var(--font-sans);
 }
+
+.home-gallery {
+  column-count: 1;
+  column-gap: 15px;
+}
+
+.home-gallery-item {
+  break-inside: avoid;
+  margin-bottom: 15px;
+}
+
+@media (min-width: 640px) {
+  .home-gallery {
+    column-count: 2;
+  }
+}
+
+@media (min-width: 1024px) {
+  .home-gallery {
+    column-count: 4;
+  }
+}
